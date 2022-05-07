@@ -4,20 +4,33 @@ import {Card, Row, Col, Input} from 'antd'
 import {useEffect, useState} from 'react'
 import {useGetCryptosQuery} from '../services/cryptoApi'
 
-const Cryptocurrencies = () => {
-  const {data: cryptosList, isFetching} = useGetCryptosQuery()
-  const [cryptos,setCryptos] = useState(cryptosList?.data?.coins)
-  useEffect(()=>{
-    if(!isFetching){
-    setCryptos(cryptosList?.data?.coins)
-    console.log(cryptos)
-  }
-  },[isFetching])
+const Cryptocurrencies = ({simplified}) => {
+  const count  = simplified ? 10 : 100;
+  const {data: cryptosList, isFetching} = useGetCryptosQuery(count)
+  const [searchItem, setSearchItem] = useState('')
+  const [cryptos,setCryptos] = useState([])
+  /*
+ useEffect is a combination of a component that mount happening at the start and also component update
+
+  */
+ useEffect(()=>{
+  const filteredData = cryptosList?.data?.coins?.filter((coin) => coin.name.toLowerCase().includes(searchItem.toLowerCase()));
+  setCryptos(filteredData)
+ },[cryptosList, searchItem])
+
+
   if(isFetching) return 'Loading..'
   return (
     <>
+    {
+    !simplified && 
+    (<div className = "search-crypto">
+      <Input placeholder="Search cryptocurrency" onChange = {(e) => setSearchItem(e.target.value)}/>
+    </div>
+    )
+    }
     <Row gutter={[32,32]} className = "crypto-card-container">
-      { cryptos && cryptos.map((currency) => (
+      { cryptos?.map((currency) => (
         <Col xs = {24} sm={12} lg={6} className = "crypto-card" key={currency.id}>
           <Link to= {`/crypto/${currency.id}`}>
             <Card title={`${currency.rank} ${currency.name}`}
