@@ -1,7 +1,7 @@
 import {Button, Menu, Typography, Avatar} from 'antd'
 import { Link } from 'react-router-dom'
 import {useState, useEffect} from 'react'
-import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined} from '@ant-design/icons'
+import { HomeOutlined, BulbOutlined, FundOutlined, MenuOutlined} from '@ant-design/icons'
 import icon from '../images/crypto.png'
 const NavBar = () => {
   const [activeMenu, setActiveMenu] = useState(true)
@@ -44,7 +44,7 @@ const items = [
      <Link to="/cryptocurrencies">Cryptocurrencies</Link>,
     '2',
     <FundOutlined />,
-  ),,
+  ),
   getItem(
      <Link to="/news">News</Link>,
     '3',
