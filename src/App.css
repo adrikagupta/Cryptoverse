@@ -6,7 +6,6 @@
    --light-blue: #e6f7ff;
    --border: #d9d9d9;
 }
-
 * {
     margin: 0;
     padding: 0;
@@ -20,6 +19,7 @@ a:hover{
 .app{
     display: flex;
     overflow: hidden;
+    background-color: #e6f7ff;
 }
 
 .navbar{
@@ -30,7 +30,6 @@ a:hover{
 .main{
     flex: 0.8;
     width: 100%;
-    
 }
 .routes{
     padding: 20px;
@@ -76,11 +75,11 @@ a:hover{
 
 @media screen and (max-width:1300px){
     .main{
-        margin-left: 50px;
+        margin-left: 0px;
     }
 }
 
-@media screen and (max-width:1170px){
+@media screen and (max-width:1260px){
     .main{
         margin-left: 50px;
     }
@@ -359,7 +358,7 @@ width: 70%;
     min-height: 65vh !important;
 }
 .crypto-card{
-    min-width: 250px;
+    min-width: 205px;
 }
 .crypto-card .crypto-image{
     width:35px;

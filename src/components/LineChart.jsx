@@ -61,7 +61,7 @@ scales:
   }, 
 }, 
 };
-    console.log(coinHistory)
+    //console.log(coinHistory)
   return (
     <>
     <Row className = "chart-header">

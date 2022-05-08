@@ -13,7 +13,7 @@ const {Option} = Select
 
 const CryptoDetails = () => {
   const {coinId} = useParams()
-  const [timePeriod, setTimePeriod] = useState('1y')
+  const [timePeriod, setTimePeriod] = useState('7d')
   const {data, isFetching} = useGetCryptoDetailsQuery(coinId);
   const {data: coinHistory} = useGetCryptoHistoryQuery({coinId, timeperiod: timePeriod})
   const cryptoDetails = data?.data?.coin;
@@ -49,8 +49,8 @@ to resolve this use cryptoDetails?.['24hVolume']
         </Title>
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
       </Col>
-      <Select defaultValue="1y" className = "select-timePeriod" placeholder="Select Timeperiod" onChange = {(value) => setTimePeriod(value)}>
-        {time.map((date) => <Option key={date}>{date}</Option>)}
+      <Select defaultValue="7d" className = "select-timePeriod" placeholder="Select Timeperiod" onChange = {(value) => setTimePeriod(value)}>
+        {time.map((date,i) => <Option key={date}>{date}</Option>)}
       </Select>
 
       <LineChart coinHistory = {coinHistory} currentPrice = {millify(cryptoDetails.price)} coinName= {cryptoDetails.name} />
@@ -62,8 +62,8 @@ to resolve this use cryptoDetails?.['24hVolume']
              <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
           </Col>
 
-          {stats.map(({icon,title,value}) => (
-            <Col className = "coin-stats">
+          {stats.map(({icon,title,value},i) => (
+            <Col className = "coin-stats" key = {i}>
               <Col className ="coin-stats-name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
@@ -78,8 +78,8 @@ to resolve this use cryptoDetails?.['24hVolume']
             <Title level = {3} className = "coin-details-heading">Other Stats Info</Title>
              <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
 
-            {genericStats.map(({icon,title,value}) =>(
-              <Col className = "coin-stats">
+            {genericStats.map(({icon,title,value},i) =>(
+              <Col className = "coin-stats" key={i}>
                 <Col className="coin-stats-name">
                   <Text>{icon}</Text>
                   <Text>{title}</Text>
