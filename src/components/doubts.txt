@@ -1,0 +1,15 @@
+d1 : how does useState work? when does it re-render?
+
+d2 : to update the value why do weneed to pass a function inside set function of usestate
+
+d3: understand col and row in antd
+
+d4: HTMLReactParser
+
+d5: rel = "noreferrer"
+
+d6: toLocaleDateString ?
+
+d7 why * 1000 to timestamps in
+
+d8 check api for time period

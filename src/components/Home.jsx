@@ -3,6 +3,7 @@ import millify from 'millify';
 import {Link} from 'react-router-dom';
 import {useGetCryptosQuery} from '../services/cryptoApi';
 import {Cryptocurrencies, News} from '../components'
+import Loader from './Loader'
 
 const {Title} = Typography;
 const Home = () => {
@@ -12,7 +13,7 @@ const Home = () => {
 
   // console.log(data)
   // console.log(isFetching)
-  if(isFetching) return 'Loading..'
+  if(isFetching) return <Loader />
   return (
     <>
     <Title level={2} className="heading">Global Crypto Stats</Title>
